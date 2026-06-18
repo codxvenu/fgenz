@@ -1,0 +1,6 @@
+{
+  "name": "GBA",
+  "description": "A neo-brutalist Gen-Z business growth agency with interactive branding, marketing, staffing, and business development services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

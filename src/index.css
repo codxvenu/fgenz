@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom Neo-Brutalist shadow presets */
+.neo-brutal-shadow {
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.neo-brutal-shadow-white {
+  box-shadow: 4px 4px 0px 0px #ffffff;
+}
+
+.neo-brutal-shadow-primary {
+  box-shadow: 4px 4px 0px 0px #c0c1ff;
+}
+
+.neo-brutal-shadow-tertiary {
+  box-shadow: 4px 4px 0px 0px #b4d400;
+}
+
+/* Keyframes & utility animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+/* Base custom styles to elevate interaction bounds */
+body {
+  background-color: #131112;
+}
+
+input, textarea {
+  transition: border-color 0.15s ease-in-out;
+}
