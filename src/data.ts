@@ -31,69 +31,121 @@ export interface FAQItem {
 
 export const SERVICES_DATA: ServiceItem[] = [
   {
-    id: "marketing",
-    title: "Marketing",
+    id: "web-dev",
+    title: "Web Development",
     number: "01",
     iconName: "campaign",
-    description: "Promoting your business online and offline to reach more customers and build reliable, organic brand awareness.",
-    highlights: [
-      "Short-form social media videos (TikTok, Reels, Shorts)",
-      "In-person flyers, popups, and street marketing",
-      "High-converting paid social media ad campaigns"
-    ],
-    themeColor: "primary"
+    description: "Engineering blazing-fast, premium responsive web interfaces and digital systems styled for extreme performance and pixel-perfection.",
+    highlights: ["Custom React & Next.js architectures", "Headless CMS integration & setups", "Ultra-high lighthouse page speed scores"],
+    themeColor: "dark"
   },
   {
-    id: "branding",
-    title: "Branding",
+    id: "brand-strategy",
+    title: "Brand Strategy",
     number: "02",
     iconName: "brush",
-    description: "Creating clean visual identities, modern logos, and color palettes that make your company instantly recognizable and trusted.",
-    highlights: [
-      "Custom brand logos & graphic design",
-      "Modern colors, fonts, and clean style guides",
-      "Physical packaging, websites, and asset design"
-    ],
-    themeColor: "tertiary"
+    description: "Architecting memorable visual identities, premium guidelines, and creative positioning strategies that establish profound customer trust.",
+    highlights: ["Logo, typography, and asset system curation", "Dynamic identity stylebooks", "Visual asset decks & vector designs"],
+    themeColor: "green"
   },
   {
-    id: "staffing",
-    title: "Staffing",
+    id: "brand-strategy-duplicate",
+    title: "Brand Strategy",
     number: "03",
-    iconName: "groups",
-    description: "Hiring talented, skilled, and energetic workers for your team quickly, without the typical slow HR process.",
-    highlights: [
-      "Direct screening and background reviews",
-      "Fast matching with qualified candidates",
-      "Onboarding setup and interview training support"
-    ],
-    themeColor: "secondary"
+    iconName: "brush",
+    description: "Designing extensive typography pairing sets, physical stationery layouts, and interactive style rules matching your unique story.",
+    highlights: ["Custom visual storytelling playbooks", "Corporate brand books", "Physical styling assets"],
+    themeColor: "dark"
   },
   {
-    id: "acquisition",
-    title: "Acquisition",
+    id: "growth-marketing",
+    title: "Growth Marketing",
     number: "04",
     iconName: "target",
-    description: "Finding your ideal audience and setting up marketing channels that convert casual visitors into lifetime buyers.",
-    highlights: [
-      "Simple website audits to increase card signups",
-      "Referral programs that reward user invites",
-      "Online community setup to keep customers active"
-    ],
-    themeColor: "white"
+    description: "Driving hyper-targeted user distribution loops, organic product-led referrals, and ad campaign systems focused on long-term scale.",
+    highlights: ["Viral onboarding mechanism setups", "Multi-tier social distribution mechanics", "Organic loop engineering"],
+    themeColor: "purple"
   },
   {
-    id: "support",
-    title: "Support",
+    id: "ui-ux-design",
+    title: "UI/UX Design",
     number: "05",
+    iconName: "brush",
+    description: "Crafting bespoke digital interfaces, high-fidelity prototypes, and sleek UX paths built strictly to capture and hold consumer attention.",
+    highlights: ["Interactive pixel-perfect design systems", "Rich motion prototype structures", "Frictionless transactional checkout flows"],
+    themeColor: "purple"
+  },
+  {
+    id: "performance-mkt",
+    title: "Performance Marketing",
+    number: "06",
     iconName: "insights",
-    description: "Helping you open physical offices, find local commercial leases, and network with successful founders in your area.",
-    highlights: [
-      "Local location research and property selection",
-      "Actionable playbooks to launch in new cities",
-      "Founder introductions and peer mentorship circles"
-    ],
-    themeColor: "primary"
+    description: "Deploying high-intent analytical spend across multi-channel models to secure high conversion rates at calculated acquisition costs.",
+    highlights: ["Intelligent multi-tier attribution metrics", "Data-backed conversion loops", "Dynamic A/B variation systems"],
+    themeColor: "dark"
+  },
+  {
+    id: "social-media",
+    title: "Social Media Management",
+    number: "07",
+    iconName: "groups",
+    description: "Nurturing active and deeply loyal communities across major online feeds, speaking your audience's language fluently and directly.",
+    highlights: ["Real-time community moderation systems", "Multi-feed cross-posting playbooks", "Direct-message outreach tactics"],
+    themeColor: "purple"
+  },
+  {
+    id: "growth-marketing-duplicate",
+    title: "Growth Marketing",
+    number: "08",
+    iconName: "campaign",
+    description: "Amplifying high-converting channels to feed your continuous customer pipelines with certified active ready-to-convert leads.",
+    highlights: ["Hyper-granular custom funnel audits", "Influencer connection pipelines", "Conversion rate optimization lists"],
+    themeColor: "dark"
+  },
+  {
+    id: "seo-optimization",
+    title: "SEO Optimization",
+    number: "09",
+    iconName: "target",
+    description: "Achieve dominant rankings for critical target queries with state-of-the-art search index setups and crawlable contents.",
+    highlights: ["Performance-oriented content strategies", "Speedy crawler-friendly layouts", "Clean metadata structures"],
+    themeColor: "dark"
+  },
+  {
+    id: "content-creation",
+    title: "Content Creation",
+    number: "10",
+    iconName: "brush",
+    description: "Producing stunning, scroll-stopping micro-videos, cinema-grade graphics, and sleek copies that connect with contemporary subcultures.",
+    highlights: ["High-retention short-form video formats", "Slick editorial typography assets", "Interactive vector motion designs"],
+    themeColor: "green"
+  },
+  {
+    id: "content-creation-duplicate",
+    title: "Content Creation",
+    number: "11",
+    iconName: "brush",
+    description: "Constructing high-impact messaging systems, audio-visual storytelling logs, and premium imagery curated for ultimate brand authority.",
+    highlights: ["Custom script decks", "Professional lifestyle photography guides", "Acoustic branding cues"],
+    themeColor: "purple"
+  },
+  {
+    id: "social-media-duplicate",
+    title: "Social Media Management",
+    number: "12",
+    iconName: "groups",
+    description: "Designing tailored influencer rosters, organic creator content logs, and dedicated event promotions driving maximum physical and digital footprint.",
+    highlights: ["Creator partnership databases", "Local popup launch roadmaps", "Interactive trendjacking methods"],
+    themeColor: "dark"
+  },
+  {
+    id: "email-marketing",
+    title: "Email Marketing",
+    number: "13",
+    iconName: "campaign",
+    description: "Forging close digital relationships through personalized retention copy decks, private drop notifications, and loyalty incentives.",
+    highlights: ["Highly segmented drip workflows", "Captivating product-reveal copy", "Custom subscriber dashboards"],
+    themeColor: "dark"
   }
 ];
 

@@ -1,9 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
+  --font-oswald: "Oswald", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* Custom Neo-Brutalist shadow presets */
@@ -39,9 +45,113 @@
 
 /* Base custom styles to elevate interaction bounds */
 body {
-  background-color: #131112;
+  background-color: #0c0a0b;
+}
+
+/* 3D Stone Flipping Engine */
+.perspective-1000 {
+  perspective: 1200px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Premium Basalt Rock Textures matching shared visual image */
+.basalt-stone-plate {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Custom Pebble Gradients matching the design image perfectly */
+.pebble-card-dark {
+  background: radial-gradient(circle at 45% 35%, #18181b 0%, #09090b 75%, #020202 100%);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 
+    inset 0 4px 15px rgba(255, 255, 255, 0.02),
+    inset 0 -10px 25px rgba(0, 0, 0, 0.95),
+    0 8px 25px rgba(0, 0, 0, 0.7);
+}
+
+.pebble-card-green {
+  background: radial-gradient(circle at 30% 25%, #92b002 0%, #4c5a01 60%, #181d00 100%);
+  border: 1px solid rgba(146, 176, 2, 0.25);
+  box-shadow: 
+    inset 0 8px 20px rgba(230, 255, 80, 0.22),
+    inset 0 -15px 30px rgba(0, 0, 0, 0.8),
+    0 12px 35px rgba(146, 176, 2, 0.15);
+}
+
+.pebble-card-purple {
+  background: radial-gradient(circle at 30% 25%, #6a53ba 0%, #352862 60%, #100a26 100%);
+  border: 1px solid rgba(106, 83, 186, 0.25);
+  box-shadow: 
+    inset 0 8px 20px rgba(210, 180, 255, 0.22),
+    inset 0 -15px 30px rgba(0, 0, 0, 0.8),
+    0 12px 35px rgba(106, 83, 186, 0.15);
+}
+
+/* Subtle organic velvet grain overlays */
+.basalt-stone-plate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 20%, transparent 60%),
+    repeating-linear-gradient(45deg, #000 0px, #000 1px, transparent 1px, transparent 8px);
+}
+
+.basalt-stone-plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 100% 0%, #ffffff 0%, transparent 50%);
 }
 
 input, textarea {
   transition: border-color 0.15s ease-in-out;
+}
+
+/* Custom Floating Animations for Organic Pebble Grid */
+@keyframes float-pebble-1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(0.6deg); }
+}
+@keyframes float-pebble-2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(-0.5deg); }
+}
+@keyframes float-pebble-3 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-3.5px) rotate(0.4deg); }
+}
+@keyframes float-pebble-4 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-4.5px) rotate(-0.6deg); }
+}
+
+.float-1 {
+  animation: float-pebble-1 6.5s ease-in-out infinite;
+}
+.float-2 {
+  animation: float-pebble-2 8s ease-in-out infinite 1.2s;
+}
+.float-3 {
+  animation: float-pebble-3 5.5s ease-in-out infinite 2.1s;
+}
+.float-4 {
+  animation: float-pebble-4 7s ease-in-out infinite 0.7s;
 }

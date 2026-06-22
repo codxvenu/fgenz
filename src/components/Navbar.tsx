@@ -27,17 +27,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onStartBuildingClick }) => {
           <Zap className="w-6 h-6 fill-black" />
         </div>
         <div>
-          <span className="font-extrabold text-2xl md:text-3xl uppercase tracking-tighter text-white block leading-none">
+          <span className="font-oswald font-extrabold text-2xl md:text-3xl uppercase tracking-tighter text-white block leading-none">
             GBA
           </span>
-          <span className="text-[9px] tracking-[0.15em] uppercase font-bold text-[#cdf200] block mt-1">
+          <span className="font-poppins text-[9px] tracking-[0.15em] uppercase font-bold text-[#cdf200] block mt-1">
             GROWTH AGENCY
           </span>
         </div>
       </button>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center gap-8">
+      <nav className="hidden md:flex items-center gap-8 font-poppins">
         <button 
           onClick={() => scrollToSection("services")}
           className="text-white hover:text-[#c0c1ff] font-semibold text-sm uppercase tracking-wider transition-colors"
@@ -65,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onStartBuildingClick }) => {
       </nav>
 
       {/* Action CTA */}
-      <div className="hidden md:flex items-center gap-4">
+      <div className="hidden md:flex items-center gap-4 font-poppins">
         <button
           onClick={onStartBuildingClick}
           className="bg-[#c0c1ff] text-black font-extrabold text-xs uppercase tracking-wider px-5 py-3 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:scale-95 flex items-center gap-2"
@@ -85,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onStartBuildingClick }) => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="absolute top-[75px] left-0 w-full bg-[#181818] border-b-4 border-black p-6 flex flex-col gap-5 md:hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div className="absolute top-[75px] left-0 w-full bg-[#181818] border-b-4 border-black p-6 flex flex-col gap-5 md:hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-poppins">
           <button 
             onClick={() => scrollToSection("services")}
             className="text-left text-white font-extrabold text-base uppercase pb-2 border-b border-zinc-800"
