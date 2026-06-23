@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Zap, Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 interface NavbarProps {
   onStartBuildingClick: () => void;
@@ -23,17 +23,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onStartBuildingClick }) => {
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="flex items-center gap-3 text-left focus:outline-none"
       >
-        <div className="bg-[#b4d400] text-black p-1.5 border-2 border-black font-extrabold flex items-center justify-center transform -rotate-3 hover:rotate-0 transition-transform">
-          <Zap className="w-6 h-6 fill-black" />
-        </div>
-        <div>
-          <span className="font-oswald font-extrabold text-2xl md:text-3xl uppercase tracking-tighter text-white block leading-none">
-            GBA
-          </span>
-          <span className="font-poppins text-[9px] tracking-[0.15em] uppercase font-bold text-[#cdf200] block mt-1">
-            GROWTH AGENCY
-          </span>
-        </div>
+        <img 
+          alt="GBA Logo" 
+          className="w-8 h-8 object-contain" 
+          referrerPolicy="no-referrer" 
+          src="/icon.png" 
+          style={{
+            width: "120px",
+            height: "auto"
+          }}
+        />
+
       </button>
 
       {/* Desktop Navigation */}

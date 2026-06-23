@@ -46,7 +46,7 @@ const BLOCKS_DATA: BlobCard[] = [
   {
     id: "b2",
     component: B2,
-    title: "STRATEGY NODE",
+    title: "STRATEGY",
     color: "purple",
     width: 296.5,
     height: 204.55,
@@ -71,7 +71,7 @@ const BLOCKS_DATA: BlobCard[] = [
   {
     id: "b7",
     component: B7,
-    title: "PERFORMANCE NODE",
+    title: "PERFORMANCE",
     color: "purple",
     width: 242.5,
     height: 200.075,
@@ -83,7 +83,7 @@ const BLOCKS_DATA: BlobCard[] = [
   {
     id: "b4",
     component: B4,
-    title: "CREATIVE TACTIC",
+    title: "CREATIVE",
     color: "purple",
     width: 273,
     height: 219.4,
@@ -108,7 +108,7 @@ const BLOCKS_DATA: BlobCard[] = [
   {
     id: "b6",
     component: B6,
-    title: "ANALYTICS FLOW",
+    title: "ANALYTICS",
     color: "purple",
     width: 291,
     height: 203.9,
@@ -133,7 +133,7 @@ const BLOCKS_DATA: BlobCard[] = [
   {
     id: "b9",
     component: B9,
-    title: "SEO ARCHITECTURE",
+    title: "SEO",
     color: "purple",
     width: 267.5,
     height: 294.875,
@@ -158,7 +158,7 @@ const BLOCKS_DATA: BlobCard[] = [
   {
     id: "b11",
     component: B11,
-    title: "CRAWL MAX NODE",
+    title: "CRAWL MAX",
     color: "purple",
     width: 317.5,
     height: 193.475,
@@ -170,7 +170,7 @@ const BLOCKS_DATA: BlobCard[] = [
   {
     id: "b12",
     component: B12,
-    title: "RETENTION LOOPS",
+    title: "RETENTION",
     color: "purple",
     width: 253,
     height: 179.5,
@@ -235,7 +235,7 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
     <div ref={containerRef} className="w-full relative py-8 overflow-hidden">
       
       {/* 1. DESKTOP IMMERSIVE ABSOLUTE PEBBLE GRID (Scaled elements) */}
-      <div className="hidden md:flex items-center justify-center min-h-[760px] relative">
+      <div className="hidden lg:flex items-center justify-center min-h-[760px] relative">
         <div 
           style={{
             transform: `scale(${scale})`,
@@ -248,6 +248,13 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
           {BLOCKS_DATA.map((card) => {
             const SvgComponent = card.component;
             const isHovered = hoveredCardId === card.id;
+
+            const greenCards = BLOCKS_DATA.filter((c) => c.color === "green");
+            const greenIndex = greenCards.findIndex((c) => c.id === card.id);
+            const cardNumber = greenIndex !== -1 ? String(greenIndex + 1).padStart(2, "0") : "";
+            const formattedTitle = card.title
+              .toLowerCase()
+              .replace(/\b\w/g, (char) => char.toUpperCase());
 
             // Green/Yellow cards with color #d9ff0069
             if (card.color === "green") {
@@ -288,9 +295,25 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
                       />
                       
                       {/* Labeled overlay carrying strictly only the service name - with highly legible text */}
-                      <div className="absolute inset-0 flex items-center justify-center p-6 text-center pointer-events-none select-none z-10">
-                        <h4 className="font-sans font-black text-xs sm:text-[13px] md:text-[13px] tracking-[0.18em] leading-normal uppercase max-w-[85%] mx-auto text-[#d9ff00]">
-                          {card.title}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center pointer-events-none select-none z-10">
+                        <h4 
+                          className="font-sans font-black text-xs sm:text-[13px] md:text-[13px] tracking-[0.18em] leading-normal uppercase max-w-[85%] mx-auto text-[#d9ff00]" 
+                          style={{
+                            fontSize: "48px",
+                            fontFamily: "poppins, sans-serif"
+                          }}
+                        >
+                          {cardNumber}
+                          <span 
+                            className="font-sans font-black text-xs sm:text-[13px] md:text-[13px] tracking-[0.18em] leading-normal uppercase max-w-[85%] mx-auto text-[#d9ff00] block" 
+                            style={{
+                              fontSize: "18px",
+                              fontFamily: "poppins, sans-serif",
+                              color: "white"
+                            }}
+                          >
+                            {formattedTitle}
+                          </span>
                         </h4>
                       </div>
                     </div>
@@ -308,7 +331,15 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
                       />
                       
                       <div className="absolute inset-0 flex items-center justify-center p-6 text-center pointer-events-none select-none z-10">
-                        <p className="font-sans font-extrabold text-[11px] sm:text-[12px] leading-relaxed text-[#d9ff00] max-w-[85%] mx-auto filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        <p 
+                          className="leading-relaxed text-[#d9ff00] max-w-[85%] mx-auto filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                          style={{
+                            fontFamily: "'Lato', sans-serif",
+                            textTransform: "capitalize",
+                            letterSpacing: "1px",
+                            fontSize: "14px"
+                          }}
+                        >
                           {card.description}
                         </p>
                       </div>
@@ -338,9 +369,9 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
                 >
                   <div className="w-full h-full relative">
                     <SvgComponent 
-                      className="w-full h-full transition-all duration-500 ease-out"
+                      className="w-full h-full transition-all duration-500 ease-out purple-blob"
                       style={{
-                        color: "#000000",
+                        color: "transparent",
                         stroke: isHovered ? "#C8C4FF" : "transparent",
                         strokeWidth: "1.5px",
                         filter: isHovered ? "drop-shadow(0 0 20px rgba(200,196,255,0.6))" : "drop-shadow(0 0 4px rgba(200,196,255,0.15))"
@@ -355,7 +386,7 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
       </div>
 
       {/* 2. MOBILE RESPONSIVE ADAPTIVE LAYOUT (Authentic Raw Neo-Brutalist Service Cards) */}
-      <div className="block md:hidden px-4 py-6">
+      <div className="block lg:hidden px-4 py-6">
         <div className="flex flex-col gap-6">
           {BLOCKS_DATA.filter((card) => card.color === "green").map((card) => {
             const SvgComponent = card.component;

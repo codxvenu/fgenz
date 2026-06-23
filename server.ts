@@ -58,13 +58,13 @@ async function startServer() {
                 "Extreme transparency",
                 "High-velocity digital presence"
               ],
-              logoConcept: `A bold retro-tech symbol featuring interlocking kinetic gear teeth and custom geometric wordmark styled with neon highlights in JetBrains Mono.`,
+              logoConcept: `A bold retro-tech symbol featuring interlocking GBA gear teeth and custom geometric wordmark styled with neon highlights in JetBrains Mono.`,
               persona: `A Gen-Z or Millennial professional who feels restricted by corporatism and values high aesthetic standards, quick results, and direct language.`
             },
             marketing: {
               campaignTitle: `Operation: Velocity 1.0 (for ${idx(industry) || "Startup Growth"})`,
               socialAdConcepts: [
-                "A glitch-art style short-form video comparing old dusty business models with Kinetic Collective's raw delivery pipeline.",
+                "A glitch-art style short-form video comparing old dusty business models with GBA's raw delivery pipeline.",
                 "A bold minimalist typographic billboard reading: 'We don't sell hours. We ship results.'"
               ],
               budgetPriority: "70% high-impact social and micro-creator activations, 30% guerrilla visual campaigns in targeted urban startup clusters."
@@ -94,7 +94,7 @@ async function startServer() {
 
       const client = getGeminiClient();
 
-      const prompt = `You are the lead strategic consultant at Kinetic Collective, a high-octane elite Gen-Z Business Agency.
+      const prompt = `You are the lead strategic consultant at GBA, a high-octane elite Gen-Z Business Agency.
 Your objective is to generate an innovative, high-impact business growth blueprint for a company with the following details:
 - Company Name: ${businessName}
 - Industry/Niche: ${industry || "General Startup"}
@@ -108,7 +108,7 @@ Return structured advice strictly aligning with our "machines over dreams" philo
         model: "gemini-3.5-flash",
         contents: prompt,
         config: {
-          systemInstruction: "You are the premium business architect at Kinetic Collective, providing ultra-modern, high-impact tactical strategies for companies. Keep insights razor-sharp, actionable, and visually evocative.",
+          systemInstruction: "You are the premium business architect at GBA, providing ultra-modern, high-impact tactical strategies for companies. Keep insights razor-sharp, actionable, and visually evocative.",
           responseMimeType: "application/json",
           responseSchema: {
             type: Type.OBJECT,
@@ -266,7 +266,7 @@ Return structured advice strictly aligning with our "machines over dreams" philo
       const smtpPortStr = process.env.SMTP_PORT;
       const smtpUser = process.env.SMTP_USER;
       const smtpPass = process.env.SMTP_PASS;
-      const smtpFrom = process.env.SMTP_FROM || smtpUser || "bookings@kineticcollective.com";
+      const smtpFrom = process.env.SMTP_FROM || smtpUser || "bookings@gba.com";
 
       const isSmtpConfigured = !!(smtpHost && smtpUser && smtpPass);
 
@@ -322,7 +322,7 @@ Return structured advice strictly aligning with our "machines over dreams" philo
                   BOOKING DETAILS
                 </h2>
                 <p style="margin: 0 0 20px 0; font-size: 14px; color: #555555; line-height: 1.5;">
-                  A user has submitted a strategic consultancy request via the kinetic digital portal.
+                  A user has submitted a strategic consultancy request via the GBA online portal.
                 </p>
 
                 <!-- Divider -->

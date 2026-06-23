@@ -681,7 +681,7 @@ export default function App() {
             </h1>
 
             <p className="hero-desc-anim font-sans font-medium text-zinc-400 text-sm sm:text-base md:text-lg max-w-2xl mb-12 leading-relaxed">
-              Kinetic Collective helps startups and businesses grow by managing branding, marketing, hiring, customer acquisition, and business strategy—all in one place.
+              GBA helps startups and businesses grow by managing branding, marketing, hiring, customer acquisition, and business strategy—all in one place.
             </p>
 
             <div className="hero-btn-anim flex flex-col sm:flex-row gap-5 font-poppins">
@@ -701,30 +701,14 @@ export default function App() {
             </div>
           </div>
 
-          {/* Asymmetric Floating/Tilted Brutalist Workspace Card */}
-          <div className="hero-card-anim hidden lg:block absolute right-12 top-1/2 -translate-y-1/2 w-[380px] h-[480px] border-4 border-[#c0c1ff] p-5 shadow-[6px_6px_0px_0px_#c0c1ff] transform rotate-3 bg-zinc-900 overflow-hidden group">
-            <div className="absolute top-2 left-2 bg-black border border-[#c0c1ff]/50 px-2.5 py-0.5 font-mono text-[9px] uppercase text-[#c0c1ff] z-10 font-bold">
-              ACTIVE WORKSPACE
-            </div>
-            
-            <div className="w-full h-[340px] mt-6 bg-zinc-950 border-2 border-black overflow-hidden relative">
-              <img 
-                src="https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80" 
-                alt="Workspace preview" 
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover grayscale transition-all duration-750 group-hover:grayscale-0 group-hover:scale-105"
-              />
-            </div>
-            
-            <div className="mt-4 pt-1 border-t border-zinc-800 flex justify-between items-end font-poppins">
-              <div>
-                <span className="font-mono text-[9px] text-zinc-500 uppercase block font-medium">Agency Platform</span>
-                <span className="text-white font-bold text-xs uppercase block">GBA Operations</span>
-              </div>
-              <div className="bg-[#b4d400] text-black font-extrabold text-[10px] px-2 py-1 transform -rotate-3">
-                100% RELIABLE
-              </div>
-            </div>
+          {/* Hero Background Image on the Right */}
+          <div className="hero-card-anim hidden lg:block absolute right-4 md:right-12 top-1/2 -translate-y-1/2 w-[45%] h-[80%] pointer-events-none">
+            <img 
+              src="/herobg.png" 
+              alt="Hero background" 
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-contain object-right"
+            />
           </div>
         </section>
 
@@ -783,28 +767,23 @@ export default function App() {
           <div className="max-w-[1400px] mx-auto relative z-10 lg:grid lg:grid-cols-[300px_1fr] xl:grid-cols-[360px_1fr] gap-[40px] xl:gap-[64px] items-start">
             {/* Left Column containing Section Header - Sticky on Large/Wider Screens */}
             <div className="services-intro-anim lg:sticky lg:top-36 mb-12 lg:mb-0 space-y-6">
-              <div>
+              <div style={{ marginBottom: "40px" }}>
                 <span className="text-[#cdf200] font-poppins text-xs uppercase tracking-[0.25em] font-extrabold block mb-2">
                   ORGANIC BRAND PATHWAY
                 </span>
-                <h2 className="font-oswald font-extrabold text-4xl sm:text-5xl lg:text-5.5xl uppercase tracking-tighter text-white leading-none">
+                <h2 
+                  className="font-oswald font-extrabold uppercase text-white leading-none"
+                  style={{ fontSize: "4rem", letterSpacing: "1px" }}
+                >
                   Our Services
                 </h2>
               </div>
-              <p className="font-sans text-[#b4d400] font-bold text-sm sm:text-base leading-relaxed">
-                An interconnected matrix of deep-impact brand nodes. Hover over each basalt pebble cell to trigger organic shape morphs and 3D flips.
+              <p 
+                className="font-opensans text-[#b4d400] font-bold text-sm sm:text-base leading-relaxed capitalize tracking-[2px] w-[78%] lg:w-full"
+                style={{ fontFamily: "'Open Sans', sans-serif" }}
+              >
+                We build digital ecosystems that attract attention, generate trust, and drive measurable growth. From strategy and design to content and marketing, every service is engineered to help brands scale organically.
               </p>
-              
-              <div className="hidden lg:block bg-black/40 border border-zinc-900/60 rounded-2xl p-6 space-y-3">
-                <span className="font-mono text-[9px] text-[#D9FF00] tracking-widest uppercase block mb-1">NETWORK_STATUS</span>
-                <p className="text-xs text-zinc-400 font-sans leading-relaxed">
-                  Basalt shapes adapt fluidly, representing the tightly integrated nature of engineering, visual design, and conversion mechanics.
-                </p>
-                <div className="flex items-center gap-2 pt-2 text-[#D9FF00] font-mono text-[9px] tracking-wide">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D9FF00] animate-ping" />
-                  <span>MATRIX_ONLINE [OK]</span>
-                </div>
-              </div>
             </div>
 
             {/* Right Column containing the interactive stone map */}
@@ -847,7 +826,7 @@ export default function App() {
               LATEST VENTURES
             </h2>
             <p className="font-sans text-zinc-400 font-medium text-sm sm:text-base max-w-xl mt-3">
-              A snapshot of the diverse businesses currently scaling within the collective.
+              A snapshot of the diverse businesses currently scaling with GBA.
             </p>
           </div>
 
@@ -1097,7 +1076,7 @@ export default function App() {
             <button onClick={toggleModal} className="text-left text-zinc-500 hover:text-white transition-colors text-xs uppercase font-extrabold">Book Consultation</button>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="font-mono text-xs text-[#cdf200] uppercase font-extrabold block mb-1">Legal Nodes</span>
+            <span className="font-mono text-xs text-[#cdf200] uppercase font-extrabold block mb-1">Legal Links</span>
             <a href="#" className="text-zinc-500 hover:text-white transition-colors text-xs uppercase font-extrabold">Privacy Policy</a>
             <a href="#" className="text-zinc-500 hover:text-white transition-colors text-xs uppercase font-extrabold">Terms of Operations</a>
           </div>
