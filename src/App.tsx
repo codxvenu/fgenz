@@ -485,6 +485,9 @@ export default function App() {
   // Interactive Booking Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookingStep, setBookingStep] = useState<"form" | "sending" | "success">("form");
+  const [bookingError, setBookingError] = useState<string | null>(null);
+  const [bookingWarning, setBookingWarning] = useState<string | null>(null);
+  const [notification, setNotification] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -495,26 +498,74 @@ export default function App() {
   });
 
   const toggleModal = () => {
-    setIsModalOpen(prev => !prev);
-    setBookingStep("form");
+    setIsModalOpen(prev => {
+      const next = !prev;
+      if (!next) {
+        setBookingError(null);
+        setBookingWarning(null);
+        setBookingStep("form");
+      }
+      return next;
+    });
   };
 
   const handleServiceSelect = (serviceId: string) => {
     setFormData(prev => {
       const exists = prev.selectedServices.includes(serviceId);
       const updated = exists
-        ? prev.selectedServices.filter(id => id !== serviceId)
-        : [...prev.selectedServices, serviceId];
+          ? prev.selectedServices.filter(id => id !== serviceId)
+          : [...prev.selectedServices, serviceId];
       return { ...prev, selectedServices: updated };
     });
   };
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
+  const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBookingStep("sending");
-    setTimeout(() => {
-      setBookingStep("success");
-    }, 1500);
+    setBookingError(null);
+    setBookingWarning(null);
+
+    try {
+      const response = await fetch("/api/gba/book", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error || "Failed to submit booking.");
+      }
+
+      const result = await response.json();
+      
+      // Request successful! Close modal and prompt custom toast notification
+      setIsModalOpen(false);
+      setBookingStep("form");
+      
+      // Reset form controls
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        budget: "$5k - $10k",
+        message: "",
+        selectedServices: []
+      });
+
+      // Show sleek top Level notification saying active literal payload: "Request send"
+      setNotification("Request send");
+      setTimeout(() => {
+        setNotification(null);
+      }, 5000);
+
+    } catch (err: any) {
+      console.error("Booking submission failed:", err);
+      setBookingError(err.message || "An error occurred during booking. Please try again.");
+      setBookingStep("form");
+    }
   };
 
   const scrollToServices = () => {
@@ -590,6 +641,24 @@ export default function App() {
 
   return (
     <div className="bg-[#131112] min-h-screen text-[#e5e2e1] font-sans selection:bg-[#b4d400] selection:text-black antialiased">
+      {/* Top Floating Success Toast */}
+      {notification && (
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] animate-bounce max-w-sm w-full px-4">
+          <div className="bg-black text-[#cdf200] px-6 py-4 border-4 border-[#cdf200] font-mono text-xs uppercase tracking-widest font-black shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#cdf200] animate-ping" />
+              <span>{notification}</span>
+            </div>
+            <button 
+              onClick={() => setNotification(null)}
+              className="text-zinc-400 hover:text-white font-bold ml-2 font-sans text-sm"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Navigation header */}
       <Navbar onStartBuildingClick={toggleModal} />
 
@@ -1151,6 +1220,13 @@ export default function App() {
                   </div>
                 </div>
 
+                {bookingError && (
+                  <div className="p-3 bg-red-950/40 border-2 border-red-500 text-red-200 text-xs font-mono rounded-none">
+                    <p className="font-extrabold uppercase mb-1">⚠️ Error submitting booking</p>
+                    {bookingError}
+                  </div>
+                )}
+
                 <button 
                   type="submit"
                   className="w-full bg-[#cdf200] text-black font-poppins font-extrabold text-xs uppercase tracking-wider py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center justify-center gap-2"
@@ -1170,30 +1246,6 @@ export default function App() {
                 <p className="text-xs text-zinc-500 font-mono">
                   Connecting to our database...
                 </p>
-              </div>
-            )}
-
-            {bookingStep === "success" && (
-              <div className="py-12 flex flex-col items-center justify-center text-center space-y-6">
-                <div className="bg-[#b4d400] text-black p-4 border-4 border-black rounded-full inline-flex items-center justify-center">
-                  <Check className="w-10 h-10 stroke-[3]" />
-                </div>
-                <div className="space-y-2">
-                  <h4 className="font-poppins font-extrabold text-2xl uppercase text-white tracking-tight">
-                    Request Submitted!
-                  </h4>
-                  <p className="font-sans text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
-                    Thank you! We will review your info for <span className="text-[#cdf200] font-bold">{formData.company}</span> and reply back at <span className="text-[#c0c1ff] font-bold">{formData.email}</span> within 2 hours to book your call.
-                  </p>
-                </div>
-                
-                <button
-                  type="button"
-                  onClick={toggleModal}
-                  className="bg-white hover:bg-neutral-200 text-black px-6 py-3 border-2 border-black font-poppins font-extrabold text-xs uppercase tracking-wider transition-all"
-                >
-                  Close Menu
-                </button>
               </div>
             )}
           </div>

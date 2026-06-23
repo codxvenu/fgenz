@@ -3,6 +3,8 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from "dotenv";
+import fs from "fs";
+import nodemailer from "nodemailer";
 
 dotenv.config();
 
@@ -214,6 +216,182 @@ Return structured advice strictly aligning with our "machines over dreams" philo
       console.error("GBA Build Endpoint Error:", error);
       res.status(500).json({
         error: "Internal Server Error in generating blueprint.",
+        details: error.message || error.toString()
+      });
+    }
+  });
+
+  // API endpoint to book a consultation and email/persist the details
+  app.post("/api/gba/book", async (req, res) => {
+    try {
+      const { name, email, company, budget, message, selectedServices } = req.body;
+
+      if (!name || !email) {
+        return res.status(400).json({ error: "Name and Email are required fields." });
+      }
+
+      const bookingRecord = {
+        name,
+        email,
+        company: company || "N/A",
+        budget: budget || "Not specified",
+        message: message || "No message left.",
+        selectedServices: selectedServices || [],
+        timestamp: new Date().toISOString()
+      };
+
+      // 1. Persist booking data locally to bookings.json for durable records
+      const bookingsFilePath = path.join(process.cwd(), "bookings.json");
+      let currentBookings = [];
+      try {
+        if (fs.existsSync(bookingsFilePath)) {
+          const rawData = fs.readFileSync(bookingsFilePath, "utf8");
+          currentBookings = JSON.parse(rawData);
+        }
+      } catch (err) {
+        console.error("Error reading current bookings, initializing as empty array:", err);
+      }
+      
+      currentBookings.push(bookingRecord);
+      try {
+        fs.writeFileSync(bookingsFilePath, JSON.stringify(currentBookings, null, 2), "utf8");
+        console.log("Booking successfully persisted to bookings.json");
+      } catch (err) {
+        console.error("Error saving booking to bookings.json:", err);
+      }
+
+      // 2. Attemping notification via Email (SMTP)
+      const targetEmail = "genzesofindia+consultation@gmail.com";
+      const smtpHost = process.env.SMTP_HOST;
+      const smtpPortStr = process.env.SMTP_PORT;
+      const smtpUser = process.env.SMTP_USER;
+      const smtpPass = process.env.SMTP_PASS;
+      const smtpFrom = process.env.SMTP_FROM || smtpUser || "bookings@kineticcollective.com";
+
+      const isSmtpConfigured = !!(smtpHost && smtpUser && smtpPass);
+
+      if (!isSmtpConfigured) {
+        // Send success message but notify that SMTP config is missing (will display warning tooltip)
+        console.log("SMTP environment variables are not fully configured. Email was not sent but booking is safely stored.");
+        return res.json({
+          success: true,
+          persisted: true,
+          emailSent: false,
+          warning: "Booking received! Please configure SMTP_HOST, SMTP_USER, and SMTP_PASS in the secrets menu to activate email notifications."
+        });
+      }
+
+      const smtpPort = smtpPortStr ? parseInt(smtpPortStr, 10) : 587;
+
+      const transporter = nodemailer.createTransport({
+        host: smtpHost,
+        port: smtpPort,
+        secure: smtpPort === 465, // secure for port 465
+        auth: {
+          user: smtpUser,
+          pass: smtpPass
+        }
+      });
+
+      // Crafting a gorgeous Black, Purple, and White structured layout
+      const servicesHtml = bookingRecord.selectedServices.length > 0
+        ? bookingRecord.selectedServices.map((s: string) => `<span style="display:inline-block; background-color:#7950c4; color:#ffffff; font-family:monospace; padding:4px 8px; margin:3px; font-weight:bold; font-size:11px; text-transform:uppercase;">${s.toUpperCase()}</span>`).join(" ")
+        : `<span style="color:#555555; font-style:italic;">None chosen</span>`;
+
+      const mailOptions = {
+        from: `"${bookingRecord.name} (GBA Booking)" <${smtpFrom}>`,
+        to: targetEmail,
+        replyTo: bookingRecord.email,
+        subject: `NEW GBA CONSULTANCY BOOKING: ${bookingRecord.name}`,
+        html: `
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+              <title>New GBA Booking</title>
+            </head>
+            <body style="margin: 0; padding: 40px; background-color: #000000; font-family: Arial, sans-serif; color: #ffffff;">
+              <div style="max-width: 550px; margin: 0 auto; background-color: #ffffff; border: 4px solid #7950c4; padding: 30px; box-shadow: 10px 10px 0px 0px #7950c4; color: #000000;">
+                
+                <!-- Purple Accent Badge -->
+                <div style="background-color: #7950c4; color: #ffffff; display: inline-block; padding: 6px 12px; font-family: monospace; font-weight: bold; font-size: 11px; text-transform: uppercase; margin-bottom: 20px;">
+                  GBA CONSULTANCY REQUEST
+                </div>
+
+                <h2 style="font-family: Arial, sans-serif; font-size: 24px; font-weight: 900; text-transform: uppercase; margin: 0 0 10px 0; color: #000000;">
+                  BOOKING DETAILS
+                </h2>
+                <p style="margin: 0 0 20px 0; font-size: 14px; color: #555555; line-height: 1.5;">
+                  A user has submitted a strategic consultancy request via the kinetic digital portal.
+                </p>
+
+                <!-- Divider -->
+                <div style="height: 3px; background-color: #7950c4; margin-bottom: 20px;"></div>
+
+                <!-- Structured plain content (White body backdrop for maximum contrast) -->
+                <div style="background-color: #ffffff; color: #000000;">
+                  
+                  <div style="margin-bottom: 16px;">
+                    <span style="font-family: monospace; font-size: 11px; color: #7950c4; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 2px;">CLIENT NAME</span>
+                    <span style="font-size: 16px; font-weight: bold; color: #000000;">${bookingRecord.name}</span>
+                  </div>
+
+                  <div style="margin-bottom: 16px;">
+                    <span style="font-family: monospace; font-size: 11px; color: #7950c4; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 2px;">EMAIL ADDRESS</span>
+                    <a href="mailto:${bookingRecord.email}" style="font-size: 15px; font-weight: bold; color: #7950c4; text-decoration: underline;">${bookingRecord.email}</a>
+                  </div>
+
+                  <div style="margin-bottom: 16px;">
+                    <span style="font-family: monospace; font-size: 11px; color: #7950c4; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 2px;">ENTERPRISE / COMPANY</span>
+                    <span style="font-size: 15px; font-weight: bold; color: #000000;">${bookingRecord.company}</span>
+                  </div>
+
+                  <div style="margin-bottom: 16px;">
+                    <span style="font-family: monospace; font-size: 11px; color: #7950c4; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 2px;">ESTIMATED BUDGET</span>
+                    <span style="display: inline-block; background-color: #000000; color: #ffffff; padding: 4px 10px; font-weight: bold; font-size: 12px;">${bookingRecord.budget}</span>
+                  </div>
+
+                  <div style="margin-bottom: 16px;">
+                    <span style="font-family: monospace; font-size: 11px; color: #7950c4; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 6px;">CHOSEN SERVICES</span>
+                    <div style="margin-top: 2px;">
+                      ${servicesHtml}
+                    </div>
+                  </div>
+
+                  <div>
+                    <span style="font-family: monospace; font-size: 11px; color: #7950c4; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 4px;">MESSAGE NOTES</span>
+                    <div style="margin: 4px 0 0 0; padding: 12px; background-color: #f7f7f7; border-left: 4px solid #7950c4; color: #333333; font-size: 14px; line-height: 1.5;">
+                      ${bookingRecord.message.replace(/\n/g, "<br/>")}
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Footer stamp -->
+                <div style="border-top: 1px solid #eeeeee; padding-top: 15px; margin-top: 25px; font-family: monospace; font-size: 10px; color: #888888; text-align: center;">
+                  TIMESTAMP: ${bookingRecord.timestamp} <br/>
+                  SYSTEM LOG: GBA_CLIENT_BOOKING_SUCCESS
+                </div>
+
+              </div>
+            </body>
+          </html>
+        `
+      };
+
+      await transporter.sendMail(mailOptions);
+      console.log(`Success: Strategic booking details delivered successfully to ${targetEmail}`);
+
+      return res.json({
+        success: true,
+        persisted: true,
+        emailSent: true
+      });
+
+    } catch (error: any) {
+      console.error("Booking API Error:", error);
+      res.status(500).json({
+        error: "Internal Server Error in completing reservation.",
         details: error.message || error.toString()
       });
     }
