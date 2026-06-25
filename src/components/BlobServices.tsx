@@ -297,7 +297,9 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
                       {/* Labeled overlay carrying strictly only the service name - with highly legible text */}
                       <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center pointer-events-none select-none z-10">
                         <h4 
-                          className="font-sans font-black text-xs sm:text-[13px] md:text-[13px] tracking-[0.18em] leading-normal uppercase max-w-[85%] mx-auto text-[#d9ff00]" 
+                          className={`font-sans font-black text-xs sm:text-[13px] md:text-[13px] tracking-[0.18em] leading-normal uppercase max-w-[85%] mx-auto ${
+                            (greenIndex === 0 || greenIndex === 1) ? "text-[#8B5CF6] drop-shadow-[0_0_8px_rgba(139,92,246,0.6)]" : "text-[#d9ff00]"
+                          }`}
                           style={{
                             fontSize: "48px",
                             fontFamily: "poppins, sans-serif"
@@ -388,23 +390,30 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
       {/* 2. MOBILE RESPONSIVE ADAPTIVE LAYOUT (Authentic Raw Neo-Brutalist Service Cards) */}
       <div className="block lg:hidden px-4 py-6">
         <div className="flex flex-col gap-6">
-          {BLOCKS_DATA.filter((card) => card.color === "green").map((card) => {
+          {BLOCKS_DATA.filter((card) => card.color === "green").map((card, idx) => {
             const SvgComponent = card.component;
+            const isBlackBg = idx % 2 === 0;
+
             return (
               <div
                 key={card.id}
                 onClick={() => {
                   if (card.serviceId) onSelectService(card.serviceId);
                 }}
-                className="relative bg-gradient-to-br from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] border-4 border-black p-6 flex flex-col justify-between min-h-[180px] shadow-[6px_6px_0px_0px_rgba(139,92,246,0.3)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[4px_4px_0px_0px_rgba(139,92,246,0.3)] transition-all cursor-pointer overflow-hidden group rounded-xl"
+                className={
+                  isBlackBg
+                    ? "relative bg-[#0D0D0D] border border-[#8B5CF6]/50 p-6 flex flex-col justify-between min-h-[180px] shadow-[0_0_20px_rgba(139,92,246,0.15)] hover:shadow-[0_0_30px_rgba(139,92,246,0.35)] hover:border-[#8B5CF6] transition-all duration-300 cursor-pointer overflow-hidden group rounded-xl"
+                    : "relative bg-gradient-to-br from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] p-6 flex flex-col justify-between min-h-[180px] border border-white/20 shadow-[0_0_20px_rgba(139,92,246,0.15)] hover:shadow-[0_0_30px_rgba(139,92,246,0.4)] transition-all duration-300 cursor-pointer overflow-hidden group rounded-xl"
+                }
               >
                 {/* Background Organic SVG watermark element */}
-                <div className="absolute right-[-15px] bottom-[-15px] w-[140px] h-[140px] opacity-[0.14] pointer-events-none select-none z-0">
+                <div className="absolute right-[-15px] bottom-[-15px] w-[140px] h-[140px] pointer-events-none select-none z-0">
                   <SvgComponent 
                     style={{
-                      color: "#ffffff",
-                      stroke: "#ffffff",
-                      strokeWidth: "2px"
+                      color: isBlackBg ? "#8B5CF6" : "#ffffff",
+                      stroke: isBlackBg ? "#8B5CF6" : "#ffffff",
+                      strokeWidth: "2px",
+                      opacity: isBlackBg ? 0.08 : 0.12
                     }}
                   />
                 </div>
@@ -412,27 +421,40 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
                 <div className="relative z-10 flex flex-col h-full justify-between">
                   <div>
                     <div className="flex justify-between items-start mb-3">
-                      <span className="font-mono text-[9px] bg-black text-[#cdf200] px-2 py-0.5 font-extrabold uppercase tracking-widest">
-                        CORE SERVICE
-                      </span>
-                      <ArrowUpRight className="w-5 h-5 text-white stroke-[3px]" />
+                      {isBlackBg ? (
+                        <span className="font-mono text-[9px] bg-purple-950/40 backdrop-blur-md border border-purple-500/30 text-purple-200 px-2.5 py-1 font-bold uppercase tracking-widest rounded-full">
+                          CORE SERVICE
+                        </span>
+                      ) : (
+                        <span className="font-mono text-[9px] bg-white/15 backdrop-blur-md border border-white/20 text-white px-2.5 py-1 font-bold uppercase tracking-widest rounded-full">
+                          CORE SERVICE
+                        </span>
+                      )}
+                      <ArrowUpRight className={isBlackBg ? "w-5 h-5 text-[#8B5CF6] stroke-[3px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" : "w-5 h-5 text-white stroke-[3px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"} />
                     </div>
                     
-                    <h3 className="font-oswald font-extrabold text-2xl text-white uppercase tracking-tight leading-none mb-1">
+                    <h3 className={isBlackBg ? "font-oswald font-extrabold text-2xl text-white uppercase tracking-tight leading-none mb-1 group-hover:text-[#A855F7] transition-colors duration-300" : "font-oswald font-extrabold text-2xl text-white uppercase tracking-tight leading-none mb-1 group-hover:text-purple-200 transition-colors duration-300"}>
                       {card.title}
                     </h3>
 
                     {card.description && (
-                      <p className="font-sans text-xs text-purple-100 border-t-2 border-dashed border-white/20 pt-3 mt-3 leading-relaxed font-bold">
+                      <p className={isBlackBg ? "font-sans text-xs text-[#CFCFCF] border-t border-zinc-850 pt-3 mt-3 leading-relaxed font-medium" : "font-sans text-xs text-purple-100 border-t border-white/10 pt-3 mt-3 leading-relaxed font-medium"}>
                         {card.description}
                       </p>
                     )}
                   </div>
 
-                  <div className="mt-5 flex justify-between items-center bg-black text-[#cdf200] border-2 border-black font-mono text-[10px] font-extrabold px-3 py-2 uppercase transition-all duration-300 group-hover:bg-zinc-950">
-                    <span className="tracking-widest">ACTIVATE DYNAMIC WORKSHOP</span>
-                    <Zap className="w-3.5 h-3.5 ml-2 text-[#cdf200] fill-[#cdf200]" />
-                  </div>
+                  {isBlackBg ? (
+                    <div className="mt-5 flex justify-between items-center bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] text-white font-mono text-[10px] font-extrabold px-3 py-2 uppercase rounded-lg shadow-[0_0_10px_rgba(139,92,246,0.2)] transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] group-hover:scale-[1.01]">
+                      <span className="tracking-widest">ACTIVATE DYNAMIC WORKSHOP</span>
+                      <Zap className="w-3.5 h-3.5 ml-2 text-white fill-white animate-pulse" />
+                    </div>
+                  ) : (
+                    <div className="mt-5 flex justify-between items-center bg-black/40 hover:bg-black/60 border border-white/15 text-white font-mono text-[10px] font-extrabold px-3 py-2 uppercase rounded-lg transition-all duration-300 shadow-sm">
+                      <span className="tracking-widest text-purple-100">ACTIVATE DYNAMIC WORKSHOP</span>
+                      <Zap className="w-3.5 h-3.5 ml-2 text-purple-200 fill-purple-200" />
+                    </div>
+                  )}
                 </div>
               </div>
             );
