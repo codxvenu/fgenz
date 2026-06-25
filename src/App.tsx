@@ -674,7 +674,7 @@ export default function App() {
               GBA GEN-Z BUSINESS AGENCY
             </div>
             
-            <h1 className="hero-title-anim font-oswald font-extrabold text-5xl sm:text-7xl md:text-9xl mb-8 uppercase tracking-tighter leading-[0.85] text-white break-words">
+            <h1 className="hero-title-anim font-plus-jakarta font-extrabold text-5xl sm:text-7xl md:text-8xl mb-8 uppercase tracking-tighter leading-[1.0] text-white break-words">
               The One-Stop <br />
               <span className="text-[#c0c1ff] italic">Solution</span> for <br />
               Business Growth.
@@ -868,8 +868,7 @@ export default function App() {
                       </p>
                     </div>
 
-                    <div className="flex justify-between items-center border-t border-zinc-200 pt-4 font-mono text-[10px] text-zinc-500">
-                      <span>STATUS: ACTIVE & RUNNING</span>
+                    <div className="flex justify-end items-center border-t border-zinc-200 pt-4 font-mono text-[10px] text-zinc-500">
                       <span className="text-black font-extrabold font-poppins">VIEW MORE &gt;</span>
                     </div>
                   </div>
@@ -966,7 +965,7 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="metric-card-anim bg-[#c0c1ff] text-black border-4 border-black p-8 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transform -rotate-1 hover:rotate-0 transition-transform">
               <span className="font-mono text-xs uppercase font-extrabold tracking-wider bg-black text-white px-2.5 py-1 inline-block mb-3">
-                01/ Projects Delivered
+                Projects Delivered
               </span>
               <div className="font-oswald font-extrabold text-5xl md:text-7xl leading-none uppercase tracking-tighter mb-2">50+</div>
               <div className="font-poppins font-extrabold text-base md:text-lg uppercase">Brands Launched</div>
@@ -977,9 +976,9 @@ export default function App() {
 
             <div className="metric-card-anim bg-gradient-to-br from-[#7C3AED] to-[#8B5CF6] text-white border-4 border-black p-8 shadow-[4px_4px_0px_0px_rgba(124,58,237,0.4)] transform rotate-1 hover:rotate-0 transition-transform">
               <span className="font-mono text-xs uppercase font-extrabold tracking-wider bg-black text-white px-2.5 py-1 inline-block mb-3">
-                02/ Total Impact
+                Total Impact
               </span>
-              <div className="font-oswald font-extrabold text-5xl md:text-7xl leading-none uppercase tracking-tighter mb-2 text-[#D9FF00] filter drop-shadow-[0_0_8px_rgba(217,255,0,0.5)]">1M+</div>
+              <div className="font-oswald font-extrabold text-5xl md:text-7xl leading-none uppercase tracking-tighter mb-2 text-white">1M+</div>
               <div className="font-poppins font-extrabold text-base md:text-lg uppercase">Customers Reached</div>
               <p className="font-sans font-medium text-purple-100 text-xs md:text-sm mt-3 opacity-90">
                 Creative marketing setups and social media campaigns built to grab attention and drive sales.
@@ -988,7 +987,7 @@ export default function App() {
 
             <div className="metric-card-anim bg-zinc-900 text-white border-4 border-black p-8 shadow-[4px_4px_0px_0px_#ddb7ff] transform -rotate-1 hover:rotate-0 transition-transform">
               <span className="font-mono text-xs uppercase font-extrabold tracking-wider bg-zinc-850 text-[#ddb7ff] px-2.5 py-1 inline-block mb-3">
-                03/ Team Coordination
+                Team Coordination
               </span>
               <div className="font-oswald font-extrabold text-5xl md:text-7xl leading-none uppercase tracking-tighter mb-2">24/7</div>
               <div className="font-poppins font-extrabold text-base md:text-lg uppercase">Fast Results</div>
@@ -1001,30 +1000,30 @@ export default function App() {
 
         {/* BOOK CONSULTATION CTA FOR SECTION SEPARATION AND CONTINUITY */}
         <section id="accelerate-section" className="px-4 md:px-12 py-16 overflow-hidden">
-          <div className="relative bg-[#c0c1ff] border-4 border-black p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] flex flex-col md:flex-row items-center gap-12 overflow-hidden">
+          <div className="relative bg-black border-4 border-black p-8 md:p-16 shadow-[8px_8px_0px_0px_#8B5CF6] flex flex-col md:flex-row items-center gap-12 overflow-hidden">
             {/* Sticker badge */}
-            <div className="absolute -top-6 -left-3 bg-[#D9FF00] text-black px-6 py-3 border-4 border-black font-extrabold text-base md:text-lg rotate-3 uppercase tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] font-poppins">
-              BOOKING AVAILABILITY: ACTIVE
+            <div className="absolute -top-1 -left-1 bg-[#8B5CF6] text-white px-4 py-2 border-2 border-black font-extrabold text-xs uppercase tracking-wider font-poppins">
+              A step toward growth with us
             </div>
 
             <div className="cta-content-anim flex-1 text-left relative z-10 pt-4">
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-900 font-extrabold block mb-2">
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#8B5CF6] font-extrabold block mb-2">
                 TAKE THE NEXT STEP
               </span>
-              <h2 className="font-oswald font-extrabold text-4xl sm:text-7xl uppercase leading-[0.9] tracking-tighter text-black mb-6">
+              <h2 className="font-plus-jakarta font-extrabold text-4xl sm:text-7xl uppercase leading-[1.0] tracking-tight text-white mb-6">
                 READY TO <br />
-                <span className="text-white italic">ACCELERATE?</span>
+                <span className="text-[#8B5CF6] italic">ACCELERATE?</span>
               </h2>
-              <p className="font-sans font-semibold text-zinc-900 text-sm sm:text-base md:text-lg max-w-xl mb-10 leading-snug">
+              <p className="font-sans font-medium text-zinc-300 text-sm sm:text-base md:text-lg max-w-xl mb-10 leading-snug">
                 Stop dealing with slow marketing firms. Work with GBA to launch high-converting creative designs, websites, and hiring paths.
               </p>
               
               <button 
                 onClick={toggleModal}
-                className="bg-black text-white font-poppins font-extrabold text-sm sm:text-[15px] uppercase tracking-wider px-10 py-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:scale-95 flex items-center justify-center gap-4 group"
+                className="bg-[#8B5CF6] hover:bg-[#7c52f5] text-white font-poppins font-extrabold text-sm sm:text-[15px] uppercase tracking-wider px-10 py-5 border-4 border-black shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all active:scale-95 flex items-center justify-center gap-4 group"
               >
                 Book Your Call Now
-                <TrendingUp className="w-5 h-5 text-[#D9FF00] transition-transform group-hover:translate-x-1" />
+                <TrendingUp className="w-5 h-5 text-white transition-transform group-hover:translate-x-1" />
               </button>
             </div>
 

@@ -296,27 +296,14 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
                       
                       {/* Labeled overlay carrying strictly only the service name - with highly legible text */}
                       <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center pointer-events-none select-none z-10">
-                        <h4 
-                          className={`font-sans font-black text-xs sm:text-[13px] md:text-[13px] tracking-[0.18em] leading-normal uppercase max-w-[85%] mx-auto ${
-                            (greenIndex === 0 || greenIndex === 1) ? "text-[#8B5CF6] drop-shadow-[0_0_8px_rgba(139,92,246,0.6)]" : "text-[#d9ff00]"
-                          }`}
+                        <span 
+                          className="font-sans font-black text-xs sm:text-[13px] md:text-[14px] tracking-[0.18em] leading-normal uppercase max-w-[85%] mx-auto block text-white" 
                           style={{
-                            fontSize: "48px",
                             fontFamily: "poppins, sans-serif"
                           }}
                         >
-                          {cardNumber}
-                          <span 
-                            className="font-sans font-black text-xs sm:text-[13px] md:text-[13px] tracking-[0.18em] leading-normal uppercase max-w-[85%] mx-auto text-[#8B5CF6] block" 
-                            style={{
-                              fontSize: "18px",
-                              fontFamily: "poppins, sans-serif",
-                              color: "white"
-                            }}
-                          >
-                            {formattedTitle}
-                          </span>
-                        </h4>
+                          {formattedTitle}
+                        </span>
                       </div>
                     </div>
 
