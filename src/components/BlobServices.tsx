@@ -282,15 +282,15 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
                       isHovered ? "rotate-y-180" : ""
                     }`}
                   >
-                    {/* FRONT SIDE (Luminous #d9ff0069 Shape overlay and Title) */}
+                    {/* FRONT SIDE (Luminous #8B5CF6 Shape overlay and Title) */}
                     <div className="absolute inset-0 w-full h-full backface-hidden flex items-center justify-center">
                       <SvgComponent 
                         className="w-full h-full transition-all duration-500 ease-out"
                         style={{
                           color: "#000000",
-                          stroke: isHovered ? "#d9ff00" : "transparent",
+                          stroke: isHovered ? "#8B5CF6" : "transparent",
                           strokeWidth: "1.5px",
-                          filter: isHovered ? "drop-shadow(0 0 20px rgba(217,255,0,0.5))" : "drop-shadow(0 0 4px rgba(217,255,0,0.1))"
+                          filter: isHovered ? "drop-shadow(0 0 20px rgba(139,92,246,0.6))" : "drop-shadow(0 0 4px rgba(139,92,246,0.15))"
                         }}
                       />
                       
@@ -305,7 +305,7 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
                         >
                           {cardNumber}
                           <span 
-                            className="font-sans font-black text-xs sm:text-[13px] md:text-[13px] tracking-[0.18em] leading-normal uppercase max-w-[85%] mx-auto text-[#d9ff00] block" 
+                            className="font-sans font-black text-xs sm:text-[13px] md:text-[13px] tracking-[0.18em] leading-normal uppercase max-w-[85%] mx-auto text-[#8B5CF6] block" 
                             style={{
                               fontSize: "18px",
                               fontFamily: "poppins, sans-serif",
@@ -324,15 +324,15 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
                         className="w-full h-full transition-all duration-500 ease-out"
                         style={{
                           color: "#000000",
-                          stroke: isHovered ? "#d9ff00" : "transparent",
+                          stroke: isHovered ? "#8B5CF6" : "transparent",
                           strokeWidth: "1.5px",
-                          filter: isHovered ? "drop-shadow(0 0 25px rgba(217,255,0,0.35))" : "none"
+                          filter: isHovered ? "drop-shadow(0 0 25px rgba(139,92,246,0.5))" : "none"
                         }}
                       />
                       
                       <div className="absolute inset-0 flex items-center justify-center p-6 text-center pointer-events-none select-none z-10">
                         <p 
-                          className="leading-relaxed text-[#d9ff00] max-w-[85%] mx-auto filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                          className="leading-relaxed text-[#C8C4FF] max-w-[85%] mx-auto filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                           style={{
                             fontFamily: "'Lato', sans-serif",
                             textTransform: "capitalize",
@@ -396,14 +396,14 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
                 onClick={() => {
                   if (card.serviceId) onSelectService(card.serviceId);
                 }}
-                className="relative bg-[#cdf200] border-4 border-black p-6 flex flex-col justify-between min-h-[180px] shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all cursor-pointer overflow-hidden group"
+                className="relative bg-gradient-to-br from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] border-4 border-black p-6 flex flex-col justify-between min-h-[180px] shadow-[6px_6px_0px_0px_rgba(139,92,246,0.3)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[4px_4px_0px_0px_rgba(139,92,246,0.3)] transition-all cursor-pointer overflow-hidden group rounded-xl"
               >
                 {/* Background Organic SVG watermark element */}
                 <div className="absolute right-[-15px] bottom-[-15px] w-[140px] h-[140px] opacity-[0.14] pointer-events-none select-none z-0">
                   <SvgComponent 
                     style={{
-                      color: "#000000",
-                      stroke: "#000000",
+                      color: "#ffffff",
+                      stroke: "#ffffff",
                       strokeWidth: "2px"
                     }}
                   />
@@ -415,15 +415,15 @@ export default function BlobServices({ onSelectService }: BlobServicesProps) {
                       <span className="font-mono text-[9px] bg-black text-[#cdf200] px-2 py-0.5 font-extrabold uppercase tracking-widest">
                         CORE SERVICE
                       </span>
-                      <ArrowUpRight className="w-5 h-5 text-black stroke-[3px]" />
+                      <ArrowUpRight className="w-5 h-5 text-white stroke-[3px]" />
                     </div>
                     
-                    <h3 className="font-oswald font-extrabold text-2xl text-black uppercase tracking-tight leading-none mb-1">
+                    <h3 className="font-oswald font-extrabold text-2xl text-white uppercase tracking-tight leading-none mb-1">
                       {card.title}
                     </h3>
 
                     {card.description && (
-                      <p className="font-sans text-xs text-zinc-900 border-t-2 border-dashed border-black/20 pt-3 mt-3 leading-relaxed font-bold">
+                      <p className="font-sans text-xs text-purple-100 border-t-2 border-dashed border-white/20 pt-3 mt-3 leading-relaxed font-bold">
                         {card.description}
                       </p>
                     )}

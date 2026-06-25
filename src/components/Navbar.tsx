@@ -52,7 +52,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onStartBuildingClick }) => {
         </button>
         <button 
           onClick={() => scrollToSection("process")}
-          className="text-white hover:text-[#b4d400] font-semibold text-sm uppercase tracking-wider transition-colors"
+          className="text-white hover:text-[#8B5CF6] font-semibold text-sm uppercase tracking-wider transition-colors"
         >
           Framework
         </button>
@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onStartBuildingClick }) => {
               setMobileMenuOpen(false);
               onStartBuildingClick();
             }}
-            className="bg-[#cdf200] text-black text-center font-extrabold text-sm uppercase py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+            className="bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] text-white text-center font-extrabold text-sm uppercase py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] transition-all"
           >
             Book Consultation
           </button>

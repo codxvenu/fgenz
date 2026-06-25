@@ -596,7 +596,7 @@ export default function App() {
       case "campaign":
         return <Megaphone className="w-10 h-10 text-[#c0c1ff]" />;
       case "brush":
-        return <Brush className="w-10 h-10 text-[#b4d400]" />;
+        return <Brush className="w-10 h-10 text-[#8B5CF6]" />;
       case "groups":
         return <Users className="w-10 h-10 text-[#ddb7ff]" />;
       case "target":
@@ -614,7 +614,7 @@ export default function App() {
       case "primary":
         return "border-[#c0c1ff] neo-brutal-shadow-primary";
       case "tertiary":
-        return "border-[#b4d400] neo-brutal-shadow-tertiary";
+        return "border-[#8B5CF6] neo-brutal-shadow-tertiary";
       case "secondary":
         return "border-[#ddb7ff] shadow-[4px_4px_0px_0px_#ddb7ff]";
       case "white":
@@ -629,7 +629,7 @@ export default function App() {
       case "primary":
         return "text-[#c0c1ff]";
       case "tertiary":
-        return "text-[#b4d400]";
+        return "text-[#8B5CF6]";
       case "secondary":
         return "text-[#ddb7ff]";
       case "white":
@@ -640,13 +640,13 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#131112] min-h-screen text-[#e5e2e1] font-sans selection:bg-[#b4d400] selection:text-black antialiased">
+    <div className="bg-[#131112] min-h-screen text-[#e5e2e1] font-sans selection:bg-[#8B5CF6] selection:text-white antialiased">
       {/* Top Floating Success Toast */}
       {notification && (
         <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] animate-bounce max-w-sm w-full px-4">
-          <div className="bg-black text-[#cdf200] px-6 py-4 border-4 border-[#cdf200] font-mono text-xs uppercase tracking-widest font-black shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] flex items-center justify-between gap-3">
+          <div className="bg-black text-white px-6 py-4 border-4 border-[#8B5CF6] font-mono text-xs uppercase tracking-widest font-black shadow-[6px_6px_0px_0px_rgba(139,92,246,0.4)] flex items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#cdf200] animate-ping" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#D9FF00] animate-ping" />
               <span>{notification}</span>
             </div>
             <button 
@@ -670,7 +670,7 @@ export default function App() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
           <div className="relative z-10 max-w-5xl">
-            <div className="hero-badge-anim inline-block bg-[#b4d400] text-black px-4 py-1.5 mb-6 border-2 border-black font-poppins text-xs font-bold transform -rotate-1 uppercase tracking-widest">
+            <div className="hero-badge-anim inline-block bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] text-white px-4 py-1.5 mb-6 border-2 border-black font-poppins text-xs font-bold transform -rotate-1 uppercase tracking-widest">
               GBA GEN-Z BUSINESS AGENCY
             </div>
             
@@ -687,10 +687,10 @@ export default function App() {
             <div className="hero-btn-anim flex flex-col sm:flex-row gap-5 font-poppins">
               <button 
                 onClick={toggleModal}
-                className="bg-[#cdf200] text-black font-extrabold text-sm uppercase tracking-wider px-8 py-5 border-4 border-black shadow-[4px_4px_0px_0px_#ffffff] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:scale-95 flex items-center justify-center gap-2 uppercase animate-bounce"
+                className="bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] text-white font-extrabold text-sm uppercase tracking-wider px-8 py-5 border-4 border-black shadow-[4px_4px_0px_0px_rgba(139,92,246,0.5)] hover:shadow-[0_0_20px_rgba(139,92,246,0.7)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:scale-95 flex items-center justify-center gap-2 uppercase animate-bounce rounded-xl"
               >
                 Start Building Together
-                <ArrowRight className="w-4 h-4 text-black stroke-[3]" />
+                <ArrowRight className="w-4 h-4 text-white stroke-[3]" />
               </button>
               <button 
                 onClick={scrollToServices}
@@ -715,7 +715,7 @@ export default function App() {
         {/* 2. HOW WE GROW YOUR BRAND (Process) */}
         <section className="px-4 md:px-12 py-20 border-b-4 border-black" id="process">
           <div className="process-header-anim mb-16">
-            <span className="text-[#b4d400] font-mono text-xs uppercase tracking-[0.25em] font-extrabold block mb-2">
+            <span className="text-[#8B5CF6] font-mono text-xs uppercase tracking-[0.25em] font-extrabold block mb-2">
               OUR THREE-STEP PROCESS
             </span>
             <h2 className="font-oswald font-extrabold text-3xl sm:text-5xl uppercase tracking-tighter text-white">
@@ -768,7 +768,7 @@ export default function App() {
             {/* Left Column containing Section Header - Sticky on Large/Wider Screens */}
             <div className="services-intro-anim lg:sticky lg:top-36 mb-12 lg:mb-0 space-y-6">
               <div style={{ marginBottom: "40px" }}>
-                <span className="text-[#cdf200] font-poppins text-xs uppercase tracking-[0.25em] font-extrabold block mb-2">
+                <span className="text-[#8B5CF6] font-poppins text-xs uppercase tracking-[0.25em] font-extrabold block mb-2">
                   ORGANIC BRAND PATHWAY
                 </span>
                 <h2 
@@ -779,7 +779,7 @@ export default function App() {
                 </h2>
               </div>
               <p 
-                className="font-opensans text-[#b4d400] font-bold text-sm sm:text-base leading-relaxed capitalize tracking-[2px] w-[78%] lg:w-full"
+                className="font-opensans text-[#C8C4FF] font-bold text-sm sm:text-base leading-relaxed capitalize tracking-[2px] w-[78%] lg:w-full"
                 style={{ fontFamily: "'Open Sans', sans-serif" }}
               >
                 We build digital ecosystems that attract attention, generate trust, and drive measurable growth. From strategy and design to content and marketing, every service is engineered to help brands scale organically.
@@ -800,7 +800,7 @@ export default function App() {
           <div className="relative z-10 py-16">
             <h2 className="font-oswald font-extrabold text-5xl sm:text-7xl md:text-8xl leading-[1.0] uppercase tracking-tighter mb-12 py-2 overflow-hidden">
               <span className="vision-word mr-3 hover:translate-y-2 transition-transform cursor-default">Stand</span>
-              <span className="vision-word text-[#b4d400] hover:translate-y-2 transition-transform cursor-default">Together.</span>
+              <span className="vision-word text-[#A855F7] hover:translate-y-2 transition-transform cursor-default">Together.</span>
               <br className="hidden sm:block" />
               <span className="vision-word mr-3 mt-2 sm:mt-0 hover:translate-y-2 transition-transform cursor-default">Build</span>
               <span className="vision-word text-[#c0c1ff] hover:translate-y-2 transition-transform cursor-default">Together.</span>
@@ -836,7 +836,7 @@ export default function App() {
               // "bg-primary", "bg-tertiary", "bg-secondary-container" mapping:
               const isNeon = ven.name.toLowerCase().includes("neon");
               const isDrift = ven.name.toLowerCase().includes("drift");
-              const backdropColor = isNeon ? "bg-[#c0c1ff]" : isDrift ? "bg-[#b4d400]" : "bg-[#ddb7ff]";
+              const backdropColor = isNeon ? "bg-[#c0c1ff]" : isDrift ? "bg-[#8B5CF6]" : "bg-[#ddb7ff]";
 
               return (
                 <div key={ven.name} className="venture-card-anim relative group min-h-[420px]">
@@ -882,8 +882,8 @@ export default function App() {
         {/* 6. "WE DON'T SELL DREAMS" SECTION */}
         <section id="dreams" className="grid grid-cols-1 md:grid-cols-2 border-b-4 border-black">
           {/* Quote side */}
-          <div className="quote-side-anim bg-[#cdf200] text-black p-8 md:p-16 flex items-center justify-center border-b-4 md:border-b-0 md:border-r-4 border-black">
-            <h2 className="font-oswald font-extrabold text-4xl sm:text-6xl md:text-7xl uppercase leading-[0.95] tracking-tighter text-black w-full text-left md:text-center shrink-0">
+          <div className="quote-side-anim bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] text-white p-8 md:p-16 flex items-center justify-center border-b-4 md:border-b-0 md:border-r-4 border-black">
+            <h2 className="font-oswald font-extrabold text-4xl sm:text-6xl md:text-7xl uppercase leading-[0.95] tracking-tighter text-white w-full text-left md:text-center shrink-0">
               "WE DON'T <br />
               SELL DREAMS. <br />
               WE BUILD <br />
@@ -915,7 +915,7 @@ export default function App() {
         <section className="bg-zinc-950 px-4 md:px-12 py-20 border-b-4 border-black animate-fadeIn" id="faq">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="faq-intro-anim lg:col-span-4 sticky top-28">
-              <span className="text-[#b4d400] font-mono text-xs uppercase tracking-[0.25em] font-extrabold block mb-2">
+              <span className="text-[#8B5CF6] font-mono text-xs uppercase tracking-[0.25em] font-extrabold block mb-2">
                 COMMON QUESTIONS
               </span>
               <h2 className="font-oswald font-extrabold text-3xl sm:text-5xl uppercase tracking-tighter text-white leading-none mb-4">
@@ -936,7 +936,7 @@ export default function App() {
                   >
                     <button
                       onClick={() => toggleFaq(idx)}
-                      className="w-full text-left p-5 flex justify-between items-center gap-4 text-white hover:text-[#b4d400] transition-colors focus:outline-none"
+                      className="w-full text-left p-5 flex justify-between items-center gap-4 text-white hover:text-[#A855F7] transition-colors focus:outline-none"
                     >
                       <span className="font-extrabold text-[#c0c1ff] font-mono text-xs sm:text-sm shrink-0">
                         0{idx+1} //
@@ -945,7 +945,7 @@ export default function App() {
                         {item.question}
                       </span>
                       <div className="bg-black/60 p-2 border border-zinc-800 text-white shrink-0">
-                        {isOpen ? <Minus className="w-4 h-4 text-[#cdf200]" /> : <Plus className="w-4 h-4 text-[#cdf200]" />}
+                        {isOpen ? <Minus className="w-4 h-4 text-[#A855F7]" /> : <Plus className="w-4 h-4 text-[#A855F7]" />}
                       </div>
                     </button>
 
@@ -975,13 +975,13 @@ export default function App() {
               </p>
             </div>
 
-            <div className="metric-card-anim bg-[#b4d400] text-black border-4 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform rotate-1 hover:rotate-0 transition-transform">
+            <div className="metric-card-anim bg-gradient-to-br from-[#7C3AED] to-[#8B5CF6] text-white border-4 border-black p-8 shadow-[4px_4px_0px_0px_rgba(124,58,237,0.4)] transform rotate-1 hover:rotate-0 transition-transform">
               <span className="font-mono text-xs uppercase font-extrabold tracking-wider bg-black text-white px-2.5 py-1 inline-block mb-3">
                 02/ Total Impact
               </span>
-              <div className="font-oswald font-extrabold text-5xl md:text-7xl leading-none uppercase tracking-tighter mb-2">1M+</div>
+              <div className="font-oswald font-extrabold text-5xl md:text-7xl leading-none uppercase tracking-tighter mb-2 text-[#D9FF00] filter drop-shadow-[0_0_8px_rgba(217,255,0,0.5)]">1M+</div>
               <div className="font-poppins font-extrabold text-base md:text-lg uppercase">Customers Reached</div>
-              <p className="font-sans font-medium text-zinc-900 text-xs md:text-sm mt-3 opacity-90">
+              <p className="font-sans font-medium text-purple-100 text-xs md:text-sm mt-3 opacity-90">
                 Creative marketing setups and social media campaigns built to grab attention and drive sales.
               </p>
             </div>
@@ -1003,7 +1003,7 @@ export default function App() {
         <section id="accelerate-section" className="px-4 md:px-12 py-16 overflow-hidden">
           <div className="relative bg-[#c0c1ff] border-4 border-black p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] flex flex-col md:flex-row items-center gap-12 overflow-hidden">
             {/* Sticker badge */}
-            <div className="absolute -top-6 -left-3 bg-[#b4d400] text-black px-6 py-3 border-4 border-black font-extrabold text-base md:text-lg rotate-3 uppercase tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] font-poppins">
+            <div className="absolute -top-6 -left-3 bg-[#D9FF00] text-black px-6 py-3 border-4 border-black font-extrabold text-base md:text-lg rotate-3 uppercase tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] font-poppins">
               BOOKING AVAILABILITY: ACTIVE
             </div>
 
@@ -1024,7 +1024,7 @@ export default function App() {
                 className="bg-black text-white font-poppins font-extrabold text-sm sm:text-[15px] uppercase tracking-wider px-10 py-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:scale-95 flex items-center justify-center gap-4 group"
               >
                 Book Your Call Now
-                <TrendingUp className="w-5 h-5 text-[#b4d400] transition-transform group-hover:translate-x-1" />
+                <TrendingUp className="w-5 h-5 text-[#D9FF00] transition-transform group-hover:translate-x-1" />
               </button>
             </div>
 
@@ -1034,11 +1034,13 @@ export default function App() {
             </div>
           </div>
         </section>
-      </main>      {/* FOOTER */}
+      </main>
+
+      {/* FOOTER */}
       <footer className="w-full px-4 md:px-12 py-16 bg-[#0c0c0d] border-t-4 border-black flex flex-col md:flex-row justify-between items-start gap-12">
         <div className="max-w-xs space-y-4">
           <div className="flex items-center gap-2">
-            <div className="bg-[#b4d400] text-black px-2 py-0.5 border border-black font-oswald font-extrabold text-sm transform -rotate-2">
+            <div className="bg-[#8B5CF6] text-white px-2 py-0.5 border border-black font-oswald font-extrabold text-sm transform -rotate-2">
               GBA
             </div>
             <span className="font-poppins font-extrabold text-lg uppercase tracking-tight text-white block">
@@ -1053,7 +1055,7 @@ export default function App() {
             <a 
               href="#" 
               aria-label="Website" 
-              className="w-9 h-9 border-2 border-zinc-800 hover:border-[#b4d400] hover:bg-[#b4d400] hover:text-black transition-all flex items-center justify-center text-zinc-500"
+              className="w-9 h-9 border-2 border-zinc-800 hover:border-[#8B5CF6] hover:bg-[#8B5CF6] hover:text-white transition-all flex items-center justify-center text-zinc-500"
             >
               <Globe className="w-4 h-4" />
             </a>
@@ -1069,14 +1071,14 @@ export default function App() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 font-poppins">
           <div className="flex flex-col gap-3">
-            <span className="font-mono text-xs text-[#cdf200] uppercase font-extrabold block mb-1">Navigation</span>
+            <span className="font-mono text-xs text-[#C8C4FF] uppercase font-extrabold block mb-1">Navigation</span>
             <button onClick={scrollToServices} className="text-left text-zinc-500 hover:text-white transition-colors text-xs uppercase font-extrabold">Services</button>
             <button onClick={() => { const v = document.getElementById("ventures"); v?.scrollIntoView({ behavior:"smooth" }); }} className="text-left text-zinc-500 hover:text-white transition-colors text-xs uppercase font-extrabold">Ventures</button>
             <button onClick={() => { const p = document.getElementById("process"); p?.scrollIntoView({ behavior:"smooth" }); }} className="text-left text-zinc-500 hover:text-white transition-colors text-xs uppercase font-extrabold">Framework</button>
             <button onClick={toggleModal} className="text-left text-zinc-500 hover:text-white transition-colors text-xs uppercase font-extrabold">Book Consultation</button>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="font-mono text-xs text-[#cdf200] uppercase font-extrabold block mb-1">Legal Links</span>
+            <span className="font-mono text-xs text-[#C8C4FF] uppercase font-extrabold block mb-1">Legal Links</span>
             <a href="#" className="text-zinc-500 hover:text-white transition-colors text-xs uppercase font-extrabold">Privacy Policy</a>
             <a href="#" className="text-zinc-500 hover:text-white transition-colors text-xs uppercase font-extrabold">Terms of Operations</a>
           </div>
@@ -1086,7 +1088,7 @@ export default function App() {
       {/* Dynamic Booking/Consultation Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs animate-fadeIn">
-          <div className="relative w-full max-w-lg bg-[#181818] border-4 border-black p-6 md:p-8 shadow-[8px_8px_0px_0px_#cdf200] text-[#e5e2e1] max-h-[90vh] overflow-y-auto">
+          <div className="relative w-full max-w-lg bg-[#181818] border-4 border-black p-6 md:p-8 shadow-[8px_8px_0px_0px_#8B5CF6] text-[#e5e2e1] max-h-[90vh] overflow-y-auto">
             
             {/* Close button */}
             <button 
@@ -1100,7 +1102,7 @@ export default function App() {
             {bookingStep === "form" && (
               <form onSubmit={handleBookingSubmit} className="space-y-6">
                 <div>
-                  <span className="font-mono text-xs text-[#b4d400] uppercase tracking-widest font-extrabold block mb-1">
+                  <span className="font-mono text-xs text-[#8B5CF6] uppercase tracking-widest font-extrabold block mb-1">
                     [ GET STARTED ]
                   </span>
                   <h3 className="font-poppins font-extrabold text-2xl uppercase tracking-tighter text-white">
@@ -1123,7 +1125,7 @@ export default function App() {
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                       placeholder="e.g. Robin Brooks" 
-                      className="w-full bg-black border-2 border-zinc-850 focus:border-[#cdf200] p-3 text-sm text-white font-sans font-medium outline-hidden"
+                      className="w-full bg-black border-2 border-zinc-850 focus:border-[#8B5CF6] p-3 text-sm text-white font-sans font-medium outline-hidden"
                     />
                   </div>
 
@@ -1138,7 +1140,7 @@ export default function App() {
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                       placeholder="e.g. robin@company.com" 
-                      className="w-full bg-black border-2 border-zinc-850 focus:border-[#cdf200] p-3 text-sm text-white font-sans font-medium outline-hidden"
+                      className="w-full bg-black border-2 border-zinc-850 focus:border-[#8B5CF6] p-3 text-sm text-white font-sans font-medium outline-hidden"
                     />
                   </div>
 
@@ -1153,7 +1155,7 @@ export default function App() {
                       value={formData.company}
                       onChange={(e) => setFormData({...formData, company: e.target.value})}
                       placeholder="e.g. Nexa Dynamics" 
-                      className="w-full bg-black border-2 border-zinc-850 focus:border-[#cdf200] p-3 text-sm text-white font-sans font-medium outline-hidden"
+                      className="w-full bg-black border-2 border-zinc-850 focus:border-[#8B5CF6] p-3 text-sm text-white font-sans font-medium outline-hidden"
                     />
                   </div>
 
@@ -1172,7 +1174,7 @@ export default function App() {
                             onClick={() => handleServiceSelect(srv.id)}
                             className={`p-2.5 text-left border-2 text-xs font-bold uppercase tracking-tight transition-all flex items-center justify-between ${
                               isSelected 
-                               ? "bg-[#b4d400] text-black border-black" 
+                               ? "bg-[#8B5CF6] text-white border-black" 
                                : "bg-black text-zinc-400 border-zinc-900 hover:border-zinc-750"
                             }`}
                           >
@@ -1194,7 +1196,7 @@ export default function App() {
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
                       placeholder="Share your goals, timeline, or any specific requests..." 
-                      className="w-full bg-black border-2 border-zinc-850 focus:border-[#cdf200] p-3 text-sm text-white font-sans font-medium outline-hidden resize-none"
+                      className="w-full bg-black border-2 border-zinc-850 focus:border-[#8B5CF6] p-3 text-sm text-white font-sans font-medium outline-hidden resize-none"
                     />
                   </div>
                 </div>
@@ -1208,7 +1210,7 @@ export default function App() {
 
                 <button 
                   type="submit"
-                  className="w-full bg-[#cdf200] text-black font-poppins font-extrabold text-xs uppercase tracking-wider py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] text-white font-poppins font-extrabold text-xs uppercase tracking-wider py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(139,92,246,0.3)] hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center justify-center gap-2 rounded-lg"
                 >
                   Send Consultation Request
                   <ArrowRight className="w-4 h-4 stroke-[3]" />
@@ -1218,7 +1220,7 @@ export default function App() {
 
             {bookingStep === "sending" && (
               <div className="py-20 flex flex-col items-center justify-center text-center">
-                <div className="w-12 h-12 border-4 border-dashed border-[#b4d400] border-t-transparent rounded-full animate-spin mb-6"></div>
+                <div className="w-12 h-12 border-4 border-dashed border-[#8B5CF6] border-t-transparent rounded-full animate-spin mb-6"></div>
                 <h4 className="font-poppins font-extrabold text-lg uppercase text-white mb-2 tracking-tight">
                   Sending Your Request
                 </h4>
